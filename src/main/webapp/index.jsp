@@ -22,6 +22,7 @@
 <script type="text/javascript" src="<c:url value='/js/guessme.js'/>"></script>
 <script src="<c:url value='/js/services/NumberGenService.js'/>"></script>
 <script src="<c:url value='/js/controller/GuessMeController.js'/>"></script>
+<script src="<c:url value='/js/constants/constants.js'/>"></script>
 
 
 <!-- CSS -->
@@ -30,19 +31,15 @@
 
 </head>
 <body>
-<div style="width:100px;height:100px">
-<div class="backroundimg" style="float:left;width:50px">
-</div>
-<div ui-view style="float:left;width:50px"></div>
-</div>
+<div ui-view></div>
 <!-- Footer -->
-<footer>
+<!-- <footer>
     <md-toolbar class="md-medium-tall">
         <div layout="row" layout-align="center center" flex>
             <p class="md-caption" style="margin-top: 0px;">GUESS ME GAME.</p>
         </div>
     </md-toolbar>
 </footer>
-
+ -->
 </body>
 </html>

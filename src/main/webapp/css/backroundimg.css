@@ -1,3 +1,177 @@
 .backroundimg {
  background-image:url('/guessme/images/bck.jpg');
+  position: fixed;
+  top: 50%;
+  left: 50%;
+ 
+}
+.click{
+	background-color: #e7e7e7;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 60px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width:100%;
+    position: fixed;
+   top: 50%;
+   left: 50%;
+    
+}
+
+body{
+	background-color:white;
+	margin-left:50px;
+	margin-right:100px;
+	margin-top:10px;
+}
+#welcomeHeader{
+	background-color:#3399ff;
+	text-align:center;
+	color:white;
+
+}
+#body{
+	background-color:gray;
+}
+
+#button1,#button2,#button3,#button4{
+	margin-top:15px;
+}
+
+#playArea{
+	margin-left:500px;
+	margin-top:20px;
+	padding-bottom:0px;
+}
+
+#footer{
+	background-color:orange;
+	margin-top:20px;
+	text-align:center;
+	color:blue;
+	font-family:arial;
+}
+
+#guessMe{
+	margin-top:50px;
+	margin-left:350px;
+	font-size:30px;
+	color:#ffffb3;
+}
+
+#submit{
+	margin-top:20px;
+	font-size:20px;
+}
+
+input{
+	padding:10px;
+}
+
+.buttons{
+	cursor:pointer;
+	background-color:#004A7F;
+	padding:20px;
+	margin-left:5px;
+	margin-bottom:5px;
+	font-size:20px;
+	color:white;
+	border-style:groove;
+	border-width: 5px;
+	border-color:#999900;
+	border-radius: 5px;
+
+}
+
+input #submit{
+	margin-left:10px;
+}
+
+.submit{
+		margin-left:50px;
+	    border: 2px solid red;
+        border-radius: 12px;
+	    cursor:pointer;
+	    padding:10px;
+		font-size:20px;
+
+
+}
+
+.clear{
+	    border: 2px solid green;
+        border-radius: 12px;
+		cursor:pointer;
+	    padding:10px;
+        font-size:20px;
+
+}
+
+.input{
+	text-align:center;
+	width:100px;
+	margin-left:70px;
+	font-size:20px;
+	font-size-adjust:30px;
+	color:green;
+}
+
+#payedNote{
+	float:right;
+	background-color:#a27a8b;
+	width:400px;
+	height:520px;
+}
+h3{
+	border-bottom: 3px solid black;
+    display: inline;
+	text-decoration: underline;
+
+}
+.blink_text { 
+    -webkit-animation-name: blinker;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-name: blinker;
+    -moz-animation-duration: 3s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+    animation-name: blinker;
+    animation-duration: 3s;
+    animation-timing-function: linear; 
+    animation-iteration-count: infinite; color: #3399ff; 
+} 
+
+@-moz-keyframes blinker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1.0; } 
+}
+
+@-webkit-keyframes blinker { 
+    0% { opacity: 1.0; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1.0; } 
+} 
+
+@keyframes blinker { 
+    0% { opacity: 1.0; } 
+    50% { opacity: 0.3; } 
+    100% { opacity: 1.0; } 
+}
+
+@keyframes glowing {
+  0% { background-color: #004A7F; box-shadow: 0 0 3px #004A7F; }
+  50% { background-color: #0094FF; box-shadow: 0 0 10px #0094FF; }
+  100% { background-color: #004A7F; box-shadow: 0 0 3px #004A7F; }
+}
+
+.buttons {
+  animation: glowing 1500ms ;
 }

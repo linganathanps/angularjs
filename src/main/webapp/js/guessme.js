@@ -1,18 +1,19 @@
-var guessMeApp=angular.module('guessMe',['ngMaterial','ui.router']);
+'use strict'
+var guessMeApp=angular.module('guessMe',['ui.router']);
 guessMeApp.config(function($urlRouterProvider,$stateProvider){
-	 $urlRouterProvider.when('/', '/login');
-	 $urlRouterProvider.when('', '/login');
+	 $urlRouterProvider.when('/', '/guessme');
+	 $urlRouterProvider.when('', '/guessme');
      $urlRouterProvider.otherwise("/error");
 
 	$stateProvider
 	.state('home',{
-		url:"/login",
-		templateUrl:"pages/login.jsp",
+		url:"/guessme",
+		templateUrl:"pages/guessme.jsp",
 		controller:"guessController"
 	})
 	.state('first',{
 		url:"/",
-		templateUrl:"pages/login.jsp",
+		templateUrl:"pages/guessme.jsp",
 		controller:"guessController"
 	});
 
