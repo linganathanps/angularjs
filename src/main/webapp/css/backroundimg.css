@@ -133,6 +133,12 @@ h3{
 	text-decoration: underline;
 
 }
+
+#headerMsg{
+	font-size:15px;
+	background-color:white;
+	color:red;
+}
 .blink_text { 
     -webkit-animation-name: blinker;
     -webkit-animation-duration: 3s;

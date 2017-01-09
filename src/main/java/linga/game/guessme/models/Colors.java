@@ -1,6 +1,7 @@
 package linga.game.guessme.models;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author linganathan.ps
@@ -8,35 +9,35 @@ import java.io.Serializable;
  */
 public class Colors implements Serializable{
 
-	private String black;
+	private List<String> black;
 	
-	private String white;
+	private List<String> white;
 
 	/**
 	 * @return the black
 	 */
-	public String getBlack() {
+	public List<String> getBlack() {
 		return black;
 	}
 
 	/**
 	 * @param black the black to set
 	 */
-	public void setBlack(String black) {
+	public void setBlack(List<String> black) {
 		this.black = black;
 	}
 
 	/**
 	 * @return the white
 	 */
-	public String getWhite() {
+	public List<String> getWhite() {
 		return white;
 	}
 
 	/**
 	 * @param white the white to set
 	 */
-	public void setWhite(String white) {
+	public void setWhite(List<String> white) {
 		this.white = white;
 	}
 	

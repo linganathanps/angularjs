@@ -1,6 +1,8 @@
 package linga.game.guessme.controllers;
 
 
+import java.lang.invoke.MethodType;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import linga.game.guessme.apis.ColorsApi;
@@ -39,6 +42,12 @@ public String genDigit(@RequestBody Submit submit,HttpServletRequest req,HttpSer
 	else{
 		return Constants.FAILURE_MESSAGE;
 	}
+}
+
+@RequestMapping(value="/getanswer",method=RequestMethod.GET,produces="application/json")
+public String getanswer(@RequestParam String key){
+	return colorApi.getAnswer(key);
+	
 }
 
 }

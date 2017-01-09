@@ -6,9 +6,14 @@
 </div>
 <div id="payedNote">
 <h3>Played History </h3>
+<div id="history">
+</div>
 </div>
 <div  onload-include="start()">
 <div id="guessMe">
+<div id="headerMsg" ng-show="maxCount">
+{{ERRORMSG}}
+</div>
 {{inputMsg}} :
 <input class="input" ng-model="guessedValue" type="text" name="gussMe" placeholer="Please enter 4 digit no" />
 </div>
@@ -34,7 +39,7 @@
 <input class="buttons" type="button" ng-click="input()" value="<"/>
 </div>
 <div id="submit">
-<input class="clear"  type="submit" value="submit" ng-click="submit()"/>
+<input class="clear"  type="submit" value="submit"  ng-disable="maxCount" ng-click="submit()"/>
 <input class="clear" type="submit" value="Restart" ng-click="start()"/>
 <input class="submit blink_text" type="button" value="clear" ng-click="clear()"/>
 </div>
