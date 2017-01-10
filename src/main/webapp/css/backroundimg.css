@@ -135,9 +135,10 @@ h3{
 }
 
 #headerMsg{
+	padding:0px;
 	font-size:15px;
-	background-color:white;
-	color:red;
+	text-align:center;
+	color:#06f1b2;
 }
 .blink_text { 
     -webkit-animation-name: blinker;

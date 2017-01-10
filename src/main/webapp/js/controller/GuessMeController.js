@@ -3,22 +3,62 @@ guessMeApp.controller('guessController',['$scope','numGenService','gueemeConstan
     $scope.welcomeMsg=gueemeConstant.welComeMsg;
     $scope.inputMsg=gueemeConstant.inputMsg;
     $scope.copyRight=gueemeConstant.copyRight;
-	$scope.guessedValue=1000;
+    $scope.maxDigit=gueemeConstant.maxDigit;
 	$scope.playedCount=0;
+	$scope.guessedValue='';
 	$scope.getcolors=function(){
 	console.log('enteredvalue'+$scope.guessedValue);
 	};
 	$scope.input=function(inp){
 		try{
 		if(!inp){
+			$scope.enableButton();
 			$scope.guessedValue=$scope.guessedValue.substring(0,$scope.guessedValue.length-1);
 		}
 		else{
+			switch(inp){
+			case '0':
+				$scope.zero=true;
+				break;
+			case '1':
+				$scope.one=true;
+				break;
+			case '2':
+				$scope.two=true;
+				break;
+			case '3':
+				$scope.three=true;
+				break;
+			case '4':
+				$scope.four=true;
+				break;
+			case '5':
+				$scope.five=true;
+				break;
+			case '6':
+				$scope.six=true;
+				break;
+			case '7':
+				$scope.seven=true;
+				break;
+			case '8':
+				$scope.eight=true;
+				break;
+			case '9':
+				$scope.nine=true;
+				break;
+				default:
+					
+			}
 			if($scope.guessedValue.toString().length < 4){
+		$scope.maxInp=true;
 		$scope.guessedValue=$scope.guessedValue+inp;
+		if($scope.guessedValue.toString().length==4){
+		$scope.maxInp=false;
+		}
 			}
 			else{
-				$scope.maxInp=true;
+				$scope.maxInp=false;
 			}
 		}
 		}
@@ -27,19 +67,17 @@ guessMeApp.controller('guessController',['$scope','numGenService','gueemeConstan
 		}
 	};
 	$scope.clear=function(){
+		$scope.enableButton();
 		$scope.guessedValue='';
-	};
-	$scope.restart=function(){
-		$scope.guessedValue='';
-		$scope.playedCount=0;
-
 	};
 	$scope.submit=function(){
-	if($scope.playedCount<6){
+		$scope.enableButton();
+		$scope.maxInp=true;
+	if($scope.playedCount<4){
 	$scope.maxCount=false;
 	$scope.playedCount=$scope.playedCount+1;
 	$scope.submitObj={
-			'number':$scope.guessedValue,
+			'number':$scope.guessedValue.toString().substring(0,4),
 			'userId':$scope.random
 	};
 	$scope.callBack($scope.submitObj,'getcolors',function(responseData){
@@ -47,16 +85,28 @@ guessMeApp.controller('guessController',['$scope','numGenService','gueemeConstan
 		var playHistory=document.getElementById('history');
 		//$scope.guessedValue=numGenService.getColors($scope.guessedValue);
 		 var newcolor = document.createElement('div');
-		 newcolor.innerHTML = $scope.guessedValue+' :: '+$scope.colors.black+' BLACK'+' , '+$scope.colors.white+' WHITE';
+		 $scope.notes='';
+		 if($scope.colors.black.length>0){
+			 $scope.notes=$scope.colors.black+' is on Wrong place';
+		 }
+		 if($scope.colors.black.length>0&&$scope.colors.white.length>0){
+			 $scope.notes=$scope.notes+', '+$scope.colors.white+' is correct';
+		 }
+		 else if($scope.colors.white.length>0){
+			 $scope.notes=$scope.colors.white+' is correct';
+		 }
+		 else if($scope.colors.black.length==0&&$scope.colors.white.length==0){
+			 $scope.notes='No Digit Found'; 
+		 }
+		 newcolor.innerHTML = $scope.guessedValue+' :: '+$scope.notes;
 		 playHistory.appendChild(newcolor);
 		 $scope.guessedValue='';
-		 if($scope.colors.white=='4'){
-			var playHistory=document.getElementById('history');
+		 if($scope.colors.white.length==4){
+			var playHistoryF=document.getElementById('history');
 			//$scope.guessedValue=numGenService.getColors($scope.guessedValue);
-			var newcolor = document.createElement('div');
-			newcolor.innerHTML = '<div style="background-color:while;color:green;font-size:30px">WOOOW YOU GOT ME CORRECT <div>'+'I am Scared Of You Buddy ,Keep Going and Chalenge Yourself' ;
-			newcolor.innerHTML = '';
-			playHistory.appendChild(newcolor);
+			var newcolorF = document.createElement('div');
+			newcolorF.innerHTML = '<div style="background-color:while;color:#004a7f;font-size:20px">WOOOW YOU GOT ME <div>'+'Keep Going and Chalenge Yourself' ;
+			playHistoryF.appendChild(newcolorF);
 		 }
 	});
 	/*$http.post('getcolors',$scope.submitObj).then(function (response){
@@ -82,6 +132,7 @@ guessMeApp.controller('guessController',['$scope','numGenService','gueemeConstan
 	}
 	}
 	$scope.start=function(){
+		$scope.enableButton();
 		$scope.guessedValue='';
 		$scope.playedCount=0;
 		$scope.maxCount=false;
@@ -105,5 +156,38 @@ guessMeApp.controller('guessController',['$scope','numGenService','gueemeConstan
 			callBack(response);
 		});
 		
+	};
+	//can use ng-change,$watch 
+	$scope.keyPress=function($event){
+		if($scope.guessedValue.toString().length==4){
+			$scope.maxInp=false;
+		}
+		else{
+			$scope.maxInp=true;
+		}
+		if(isNaN(String.fromCharCode($event.keyCode))){
+            $event.preventDefault();
+        }
+	};
+	
+	$scope.$watch('guessedValue',function guessedValueChangeListener(newVal,oldVal){
+		console.log('new value='+newVal+','+'Old value='+oldVal);
+		
+	});
+	
+	$scope.guessedValueChangeEvent=function(guessedValue){
+		console.log('Value change Event has been triggered ='+guessedValue);
+	};
+	$scope.enableButton=function(){
+		$scope.one=false;
+		$scope.two=false;
+		$scope.three=false;
+		$scope.four=false;
+		$scope.five=false;
+		$scope.six=false;
+		$scope.seven=false;
+		$scope.eight=false;
+		$scope.nine=false;
+		$scope.zero=false;
 	}
 }]);

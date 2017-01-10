@@ -63,6 +63,8 @@ public class ColorImpl implements ColorsApi{
 	public Boolean genRandom(String userID){
 		Queue<Character> queue=new LinkedList<Character>();
 		String ran=null;
+		if(randoms.size()>300)
+			randoms.clear();
 		ran:
 		while(true){
 		for(ran=String.valueOf((Math.round(Math.random()*10000)));ran.length()!=4;){continue;}
@@ -98,10 +100,8 @@ public class ColorImpl implements ColorsApi{
 	 */
 	public static Colors colorForm(List<String> white,List<String> black){
 		Colors color=new Colors();
-		if(white!=null&&!white.isEmpty()){
 		color.setBlack(black);
 		color.setWhite(white);
-		}
 		return color;
 
 	}

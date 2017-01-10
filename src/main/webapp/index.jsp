@@ -23,6 +23,7 @@
 <script src="<c:url value='/js/services/NumberGenService.js'/>"></script>
 <script src="<c:url value='/js/controller/GuessMeController.js'/>"></script>
 <script src="<c:url value='/js/constants/constants.js'/>"></script>
+<script src="<c:url value='/js/constants/GuessMeFilter.js'/>"></script>
 
 
 <!-- CSS -->
