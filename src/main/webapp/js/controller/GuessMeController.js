@@ -98,16 +98,22 @@ guessMeApp.controller('guessController',['$scope','numGenService','gueemeConstan
 		 else if($scope.colors.black.length==0&&$scope.colors.white.length==0){
 			 $scope.notes='No Digit Found'; 
 		 }
-		 newcolor.innerHTML = $scope.guessedValue+' :: '+$scope.notes;
+		 if(isNaN($scope.colors.white)&&isNaN($scope.colors.black)){
+			 newcolor.innerHTML = 'Please Restart the Game'; 
+		 }
+		 else{
+			 newcolor.innerHTML = $scope.guessedValue+' :: '+$scope.notes; 
+		 }
 		 playHistory.appendChild(newcolor);
 		 $scope.guessedValue='';
 		 if($scope.colors.white.length==4){
 			var playHistoryF=document.getElementById('history');
 			//$scope.guessedValue=numGenService.getColors($scope.guessedValue);
 			var newcolorF = document.createElement('div');
-			newcolorF.innerHTML = '<div style="background-color:while;color:#004a7f;font-size:20px">WOOOW YOU GOT ME <div>'+'Keep Going and Chalenge Yourself' ;
+			newcolorF.innerHTML = '<div style="background-color:while;color:#004a7f;font-size:20px">WOOOW YOU GOT ME <div>'+'Keep Going and Challenge Yourself' ;
 			playHistoryF.appendChild(newcolorF);
 		 }
+		 
 	});
 	/*$http.post('getcolors',$scope.submitObj).then(function (response){
     		$scope.colors=response.data.color;
@@ -159,6 +165,8 @@ guessMeApp.controller('guessController',['$scope','numGenService','gueemeConstan
 	};
 	//can use ng-change,$watch 
 	$scope.keyPress=function($event){
+		if(!$scope.guessedValue)
+			$scope.guessedValue='';
 		if($scope.guessedValue.toString().length==4){
 			$scope.maxInp=false;
 		}
@@ -172,6 +180,9 @@ guessMeApp.controller('guessController',['$scope','numGenService','gueemeConstan
 	
 	$scope.$watch('guessedValue',function guessedValueChangeListener(newVal,oldVal){
 		console.log('new value='+newVal+','+'Old value='+oldVal);
+		if(!newVal||newVal.toString().length<4){
+			$scope.maxInp=true;	
+		}
 		
 	});
 	
